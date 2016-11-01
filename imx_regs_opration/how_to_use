@@ -2,6 +2,9 @@ How it work
 When developing device drivers and porting code to new hardware, programmers will often operate with source code in one hand and data sheet in the other, and it’s often necessary to look at the state of a device’s register set. Under Linux, you can access registers, or any area of physical memory through the /dev/mem pseudo-device and the wonders of the mmap system call. To use it, you open the /dev/mem device, mmap the page in which a register is located, then use the pointer returned to read and/or write the data. I suspect that you can find one of these in every embedded programmer’s toolkit, but at Boundary Devices, we’ve developed a tool known as devregs that allows you to put a little structure around this facility. It allows you to give names to particular physical memory areas and to describe the bits within a register in the text file /etc/devregs.dat. If you look in the git repository, you’ll see two files, named devregs_imx51.dat and devregs_imx53.dat which contain a subset of register definitions for the i.MX51 and i.MX53 processors. We don’t have a proper repository for this type of tool, but you can currently find the source code for our tool in our i.MX utility repository. The file devregs.cpp is self-contained, so I won’t explain compilation. 
 
 
+copy the devregs into /usr/bin/
+copy the devregs.dat /etc/
+
 
 How to read
 To read one or more registers, use devregs with a single parameter that’s either an address or a register name.
